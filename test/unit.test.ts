@@ -1,4 +1,4 @@
-import { createAdress } from "../wallet"
+import { createAdress, importEthWallet, publicKeyToAddress, verifyAddress } from "../wallet"
 import { generateMnemonic, mnemonicToSeed } from "../wallet/bip/bip";
 
 describe("eth wallet test", () => {
@@ -11,5 +11,23 @@ describe("eth wallet test", () => {
         const seed = mnemonicToSeed(param2);
         const addressInfo = createAdress(seed.toString("hex"), "0");
         console.log(addressInfo);
+    })
+
+    test("import eth wallet", () => {
+        const privateKey = "";
+        const addressInfo = importEthWallet(privateKey);
+        console.log(addressInfo);
+    })
+
+    test("public key to address", () => {
+        const publicKey = "";
+        const addressInfo = publicKeyToAddress(publicKey);
+        console.log(addressInfo);
+    })
+
+    test("verify address", () => {
+        const address = "";
+        const isAddress = verifyAddress(address);
+        console.log(isAddress);
     })
 })

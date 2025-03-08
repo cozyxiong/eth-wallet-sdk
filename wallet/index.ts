@@ -17,3 +17,21 @@ export function createAdress(seedHex: string, addressIndex: string) {
     };
     return JSON.stringify(result, null, 2); 
 }
+
+export function importEthWallet(privateKey: string) {
+    const wallet = new ethers.Wallet(Buffer.from(privateKey, 'hex'));
+    const result = { 
+        privateKey: wallet.privateKey,
+        publicKey: wallet.publicKey,
+        address: wallet.address
+    };
+    return JSON.stringify(result, null, 2);
+}
+
+export function publicKeyToAddress(publicKey: string) {
+    return ethers.utils.computeAddress(Buffer.from(publicKey, 'hex'));
+}
+
+export function verifyAddress(address: string) {
+    return ethers.utils.isAddress(address);
+}
